@@ -1,19 +1,40 @@
 body { 
     margin: 0;
     /*overflow-x: hidden;
-    overflow-y: scroll;
-    padding: 0;*/
+    overflow-y: scroll;*/
+    padding: 0;
 }
-
-#canvas-container {
-    height: 2000px;
-    /*position: fixed;*/
+#canv {
+    position: fixed;
+	margin: 0;
+	padding: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.page-wrapper {
+	padding: 0px;
+	margin: 12px 48px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: calc(100% - 2*48px);
+	word-wrap: break-word;
+    color: white;
+    font-size: 36px;
+    height: 10000px;
 }
 /*
+#canvas-container {
+    height: 2000px;
+    position: fixed;
+}
+
 html, body {
     height: 2000px;
 }
-*/
+
 
 #headertext {
     position: absolute;
@@ -23,4 +44,4 @@ html, body {
 	z-index: 100;
 	display:block;
     color: white;
-}
+}*/
