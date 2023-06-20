@@ -1,7 +1,22 @@
-body { margin: 0; }
+body { 
+    margin: 0;
+}
 
+#canvas-container {
+    height: 2000px;
+}
 /*
 html, body {
     height: 2000px;
 }
 */
+
+#headertext {
+    position: absolute;
+	top: 10px;
+	width: 100%;
+	text-align: center;
+	z-index: 100;
+	display:block;
+    color: white;
+}
