@@ -14,10 +14,11 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 //camera.position.set(0, 7, 5);
 //camera.rotateX(-Math.PI/3);
 const cameraXSpeed = 50;
-const cameraZSpeed = 200;
+const cameraZSpeed = 1000;
 const cameraXOffset = 10;
-const cameraZOffset = 5;
-camera.position.set(window.scrollY/cameraXSpeed + cameraXOffset, 7, window.scrollY/cameraZSpeed + cameraZOffset);
+const cameraZOffset = 8;
+//camera.position.set(window.scrollY/cameraXSpeed + cameraXOffset, 7, window.scrollY/cameraZSpeed + cameraZOffset);
+camera.position.set(9, 4, window.scrollY/cameraZSpeed + cameraZOffset);
 camera.rotateY(Math.PI/4);
 camera.rotateX(-Math.PI/4);
 // Create directional light
@@ -39,17 +40,18 @@ fontLoader.load('https://unpkg.com/three@0.77.0/examples/fonts/helvetiker_regula
 	const textGeo = new TextGeometry( 'Kyle! \nno.5', {
 		font: font,
 		size: 0.7,
-		height: 0.01,
+		height: 0.2,
 		curveSegments: 12,
 		bevelEnabled: false,
 	} );
-	const textMat = new THREE.MeshBasicMaterial( 
+	const textMat = new THREE.MeshPhongMaterial( 
 		{ color: 0xff0000 }
 	);
 	
 	const textMesh = new THREE.Mesh( textGeo, textMat );
-	textMesh.position.set(0, 0, -2);
-	textMesh.rotation.set(-Math.PI/2, 0, 0);
+	textMesh.receiveShadow = true;
+	textMesh.position.set(0, 1, -2);
+	textMesh.rotation.set(0, 0, 0);
 	scene.add( textMesh );
 } );
 
@@ -77,13 +79,18 @@ scene.add(textMesh);
 const blueMat = new THREE.MeshBasicMaterial({ color: 0x4232a8 });
 const blueCubeMesh = new THREE.Mesh(cubeGeo, blueMat);
 
+const initScrollY = window.scrollY;
+console.log("init: " + initScrollY);
 // Listen for scrolling
 function onScroll() {
-	console.log(camera.position);
+	const currScrollY = window.scrollY;
+	console.log(currScrollY);
+	//console.log(camera.position);
 	scene.add(blueCubeMesh);
 
 	//camera.position.x = -window.scrollY/cameraXSpeed + cameraXOffset;
-	camera.position.z = window.scrollY/cameraZSpeed + cameraZOffset;
+	//console.log(window.scrollY/cameraZSpeed + cameraZOffset)
+	//camera.position.z = window.scrollY/cameraZSpeed + cameraZOffset;
 }
 document.addEventListener('scroll', onScroll);
 
@@ -93,6 +100,7 @@ function animate() {
 
   cubeMesh.rotation.x += 0.01;
   cubeMesh.rotation.y += 0.01;
+  //camera.position.z += 0.1;
 
   renderer.render(scene, camera);
 }

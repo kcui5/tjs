@@ -1,9 +1,13 @@
 body { 
     margin: 0;
+    /*overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 0;*/
 }
 
 #canvas-container {
     height: 2000px;
+    /*position: fixed;*/
 }
 /*
 html, body {
