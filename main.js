@@ -11,16 +11,17 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const cameraZSpeed = 80;
 const cameraZOffset = 5;
-camera.position.set(5, 4, window.scrollY/cameraZSpeed + cameraZOffset);
-camera.rotateY(Math.PI/4);
-camera.rotateX(-Math.PI/4);
+camera.position.set(4, 4, window.scrollY/cameraZSpeed + cameraZOffset);
+camera.rotateX(-Math.PI/3.5);
+camera.rotateY(Math.PI/8);
+camera.rotateZ(Math.PI/6);
 // Create directional light
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Directional light
 directionalLight.position.set(10, 10, 10); // Set the position of the light source
 scene.add(directionalLight);
 // Create grid helper
-const gridHelper = new THREE.GridHelper(100, 100);
-//scene.add(gridHelper);
+const gridHelper = new THREE.GridHelper(80, 100);
+scene.add(gridHelper);
 
 // Create a cube
 const cubeGeo = new THREE.BoxGeometry(0.3, 0.3, 0.3);
